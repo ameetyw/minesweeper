@@ -82,11 +82,10 @@ function lifeLostAt(pos) {
 }
 
 function undo() {
-    if (!gGame.secsPassed) {
+    if (!gGame.secsPassed || !gGame.isOn) {
         document.querySelector('.message').style.display = 'block';
         return;
     }
-    if (!gGame.isOn) return;
     if (gBoardBackups.length === 1) return; // original state already
 
     gBoardBackups.pop();
@@ -105,7 +104,7 @@ function undo() {
 }
 
 function hintClicked() {
-    if (!gGame.secsPassed) {
+    if (!gGame.secsPassed || !gGame.isOn) {
         document.querySelector('.message').style.display = 'block';
         return;
     }
@@ -149,7 +148,7 @@ function getHintPositions(pos) {
 }
 
 function showSafeClick() {
-    if (!gGame.secsPassed) {
+    if (!gGame.secsPassed || !gGame.isOn) {
         document.querySelector('.message').style.display = 'block';
         return;
     }

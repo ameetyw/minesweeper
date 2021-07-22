@@ -26,6 +26,7 @@ function init() {
     document.querySelector(`[data-id="time"]`).innerText = '0:00.0';
 
     document.querySelector('.restart').innerText = PLAY_EMOJI;
+    document.querySelector('.message').style.display = 'none';
 
     gBoard = createBoard(gLevel.SIZE);
     renderBoard();

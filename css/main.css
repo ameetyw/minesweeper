@@ -11,7 +11,7 @@ body {
 }
 
 body>img {
-    height: 150px;
+    height: 230px;
 }
 
 .levels {
@@ -43,7 +43,7 @@ button:hover {
     background-color: whitesmoke;
     width: 60px;
     display: block;
-    margin: 5px auto;
+    margin: 15px auto 1px;
     border-radius: 10px;
     font-size: 20px;
     padding: 5px 10px;
