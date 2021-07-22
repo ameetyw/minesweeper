@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mine Sweeper</title>
+    <link rel="stylesheet" href="css/main.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body onload="init()">
+    <img src="img/MineSweeper_Universe.jpg" alt="MINE SWEEPER" />
+
+    <div class="levels">
+        <button onclick="setLevel(1)">Easy</button>
+        <button onclick="setLevel(2)">Medium</button>
+        <button onclick="setLevel(3)">Hard</button>
+    </div>
+
+    <button class="restart" onclick="init()"></button>
+
+    <div class="features">
+        <div>Time: <span data-id="time"></span> </div>
+        <div>Lives: <span class="icon lives" data-id="lives"></span> </div>
+    </div>
+    <div class="features">
+        <div>Hints:
+            <span class="icon" data-id="hints" onclick="hintClicked()"></span>
+        </div>
+        <div>Safe clicks:
+            <span class="icon" data-id="safe-click" onclick="showSafeClick()"></span>
+        </div>
+        <button onclick="undo()">Undo</button>
+    </div>
+
+    <div class="hint-text">Click on the cell of interest to illuminate it...</div>
+    <div class="game-board"></div>
+    <div class="message">Start the game first...</div>
+
+    <div class="footer-container">
+        <div class="footer">Coffeerights&copy;2021 Amitee Weiner</div>
+    </div>
+    <script src="js/util.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/game-over.js"></script>
+</body>
+
+</html>
