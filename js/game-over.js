@@ -7,8 +7,7 @@ const LOOSE_EMOJI = '😵';
 
 function checkGameOver() {
     if (gGame.clickedMinesCount === gLevel.MINES) gameOver(LOOSE);
-    else if (gGame.shownCount === gLevel.SIZE ** 2 - gLevel.MINES +
-        (TOTAL_LIVES_COUNT - gGame.livesCount)) gameOver(WIN);
+    else if (gGame.shownCount - gGame.clickedMinesCount === gLevel.SIZE ** 2 - gLevel.MINES) gameOver(WIN);
 }
 
 function gameOver(state) {

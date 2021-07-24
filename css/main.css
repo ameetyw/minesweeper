@@ -70,7 +70,8 @@ button:hover {
 }
 
 .features button {
-    width: 80px;
+    width: 100px;
+
     border-radius: 7px;
     background-color: #fee507;
 }
@@ -139,18 +140,6 @@ button:hover {
     transition: 0.3s;
     font-size: 13px;
 }
-
-/* .scores table, th, td {
-    margin: 15px auto;
-    border-collapse: collapse;
-    border: 3px solid #555555;
-    margin-bottom: 50px;
-    padding: 5px;
-}
-
-.scores th {
-    background-color: lightsalmon;
-} */
 
 .footer-container {
     margin-top: 100px;

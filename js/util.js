@@ -62,8 +62,6 @@ function renderFeature(featureName, count, SYMBOL) {
 function createBackUp() {
     gBoardBackups.push(copyBoard(gBoard));
     gGameBackups.push({ ...gGame });
-    // console.log('click gBoardBackups', gBoardBackups);
-    // console.log('gGameBackups', gGameBackups);
 }
 
 function copyBoard(board) {
@@ -93,7 +91,3 @@ function updateTimer() {
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
-
-
-
-//     renderFeature('lives', gGame.livesCount, LIFE);

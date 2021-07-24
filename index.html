@@ -10,7 +10,8 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Press+Start+2P&display=swap"
+        rel="stylesheet">
 </head>
 
 <body onload="init()">
@@ -39,8 +40,17 @@
     </div>
 
     <div class="hint-text">Click on the cell of interest to illuminate it...</div>
+
     <div class="game-board"></div>
+
     <div class="message">Start the game first...</div>
+
+    <div class="features">
+        <button onclick="setManual()">Manual</button>
+        <div class="manual">
+            Mines left: <span data-id="mines-left"></span>
+        </div>
+    </div>
 
     <div class="footer-container">
         <div class="footer">Coffeerights&copy;2021 Amitee Weiner</div>

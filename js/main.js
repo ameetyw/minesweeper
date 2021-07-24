@@ -92,7 +92,7 @@ function undo() {
     gGameBackups.pop();
 
     // copy last state of backup arrays
-    gBoard = gBoardBackups.slice(-1)[0];
+    gBoard =  copyBoard(gBoardBackups.slice(-1)[0]);
     var lastGameState = gGameBackups.slice(-1)[0];
 
     // restore relevant gGame entries
