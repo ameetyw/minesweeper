@@ -11,7 +11,7 @@ body {
 }
 
 body>img {
-    height: 230px;
+    height: 200px;
 }
 
 .levels {
@@ -139,6 +139,11 @@ button:hover {
     margin: 20px auto;
     transition: 0.3s;
     font-size: 13px;
+}
+
+.manual {
+    margin-top: 40px;
+    /* display: none; */
 }
 
 .footer-container {
