@@ -35,7 +35,7 @@ function showCell(pos) {
     if (cell.isMine) elCell.innerText = MINE;
     else elCell.innerText = NUMS[cell.minesAroundCount];
     
-    if (gGame.isHintOn || gGame.isSafeClickOn) {
+    if (gGame.isHintOn || gGame.isSafeClickOn || gManualMode.isOn) {
         elCell.classList.add('hint');
     } else {
         cell.isShown = true;

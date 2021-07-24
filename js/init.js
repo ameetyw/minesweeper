@@ -16,6 +16,7 @@ var gLevel = { SIZE: 4, MINES: 2 };
 var gBoard;
 var gTimerIntervalId;
 var gMinesAdded;
+var gManualMode = {};
 var gBoardBackups;
 var gGameBackups = {};
 
@@ -26,7 +27,6 @@ function init() {
     document.querySelector(`[data-id="time"]`).innerText = '0:00.0';
 
     document.querySelector('.restart').innerText = PLAY_EMOJI;
-    document.querySelector('.message').style.display = 'none';
 
     gBoard = createBoard(gLevel.SIZE);
     renderBoard();
@@ -48,13 +48,18 @@ function initializeGameVariables() {
     gGame.isSafeClickOn = false;
     gMinesAdded = 0;
 
+    gManualMode.isOn = false;
+    gManualMode.minePositions = [];
+    
     gBoardBackups = [];
     gGameBackups = [];
 }
 
 function startGame(pos) {
     document.querySelector('.message').style.display = 'none';
-    while (gMinesAdded < gLevel.MINES) setMinesAround(pos);
+    if (!gManualMode.isOn) {
+        while (gMinesAdded < gLevel.MINES) setMinesAround(pos);
+    }
     setNeighMinesCounts();
     turnTimerOn();
     createBackUp();

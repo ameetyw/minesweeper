@@ -8,10 +8,14 @@ function cellClicked(cellI, cellJ) {
 
     // allow exposing flags after game is over
     if (!gGame.isOn) {
+        gManualMode.isOn = true; // will label mines in green..
         if (cell.isMarked) showCell(pos);
         return;
     }
-
+    if (gManualMode.isOn) {
+        manualMineSet(cell, pos);
+        return;
+    }
     if (!gGame.secsPassed) startGame(pos);
 
     if (gGame.isHintOn) showHintAround(pos);
@@ -92,7 +96,7 @@ function undo() {
     gGameBackups.pop();
 
     // copy last state of backup arrays
-    gBoard =  copyBoard(gBoardBackups.slice(-1)[0]);
+    gBoard = copyBoard(gBoardBackups.slice(-1)[0]);
     var lastGameState = gGameBackups.slice(-1)[0];
 
     // restore relevant gGame entries
@@ -104,12 +108,9 @@ function undo() {
 }
 
 function hintClicked() {
-    if (!gGame.secsPassed || !gGame.isOn) {
-        document.querySelector('.message').style.display = 'block';
-        return;
-    }
-    if (!gGame.hintsCount) return;
-    
+    checkToShowMessage();
+    if (!gGame.hintsCount || !gGame.isOn || !gGame.secsPassed) return;
+
     gGame.hintsCount--;
     renderFeature('hints', gGame.hintsCount, HINT);
     gGame.isHintOn = true;
@@ -148,11 +149,8 @@ function getHintPositions(pos) {
 }
 
 function showSafeClick() {
-    if (!gGame.secsPassed || !gGame.isOn) {
-        document.querySelector('.message').style.display = 'block';
-        return;
-    }
-    if (!gGame.hintsCount) return;
+    checkToShowMessage();
+    if (!gGame.safeClickCount || !gGame.isOn || !gGame.secsPassed) return;
 
     gGame.safeClickCount--;
     renderFeature('safe-click', gGame.safeClickCount, SAFE_CLICK);
@@ -174,4 +172,66 @@ function getRandomSafeClick() {
 
     var randIdx = getRandomInt(0, safePositions.length);
     return safePositions[randIdx];
+}
+
+function setManualMode() {
+    init();
+    gManualMode.isOn = true;
+
+    // show message to add mines
+    var elMessage = document.querySelector('.manual-message');
+    elMessage.style.display = 'block';
+    // show mines left
+    var elMinesLeftText = document.querySelector('.mines-left');
+    elMinesLeftText.style.display = 'inline-block';
+    // show # of mines left
+    var elMinesLeftNum = document.querySelector('[data-id="mines-left"]');
+    elMinesLeftNum.innerText = gLevel.MINES - gMinesAdded;
+}
+
+function manualMineSet(cell, pos) {
+    console.log('cell:', cell, 'pos:', pos);
+    cell.isMine = true;
+    gMinesAdded++;
+
+    showCell(pos);
+    gManualMode.minePositions.push(pos);
+
+    var elMinesLeft = document.querySelector('[data-id="mines-left"]');
+    elMinesLeft.innerText = gLevel.MINES - gMinesAdded;
+
+    if (gMinesAdded === gLevel.MINES) setTimeout(manualSetDone, 1000);
+}
+
+function manualSetDone() {
+    gManualMode.isOn = false;
+
+    for (var i = 0; i < gLevel.MINES; i++) {
+        var currCellPos = gManualMode.minePositions[i];
+        hideCell(currCellPos);
+    }
+
+    // hide message
+    var elMessage = document.querySelector('.manual-message');
+    elMessage.style.display = 'none';
+    // hide mines left
+    var elMinesLeftText = document.querySelector('.mines-left');
+    elMinesLeftText.style.display = 'none';
+}
+
+function checkToShowMessage() {
+    var elMessage = null;
+    
+    if (!gGame.isOn) {
+        elMessage = document.querySelector('[data-id="message-new"]');
+    } else if (!gGame.secsPassed) {
+        elMessage = document.querySelector('[data-id="message-start"]');
+    }
+    
+    if (elMessage) {
+        elMessage.style.display = 'block';
+        setTimeout(function() {
+            elMessage.style.display = 'none';
+        }, 1000);
+    }
 }

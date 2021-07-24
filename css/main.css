@@ -71,7 +71,6 @@ button:hover {
 
 .features button {
     width: 100px;
-
     border-radius: 7px;
     background-color: #fee507;
 }
@@ -141,9 +140,25 @@ button:hover {
     font-size: 13px;
 }
 
-.manual {
+/* <div class="features manual">
+<button class="manual-button" onclick="setManualMode()">Manual</button>
+<div class="mines-left">
+    Mines left: <span data-id="mines-left"></span>
+</div>
+<div class="manual-message">Click to set mines</div>
+</div> */
+
+.manual-button {
     margin-top: 40px;
-    /* display: none; */
+}
+
+.manual .mines-left {
+    display: none;
+}
+
+.features .manual-message {
+    margin-top: 20px;
+    display: none;
 }
 
 .footer-container {

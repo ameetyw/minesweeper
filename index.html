@@ -43,7 +43,16 @@
 
     <div class="game-board"></div>
 
-    <div class="message">Start the game first...</div>
+    <div class="message" data-id="message-start">Start the game first...</div>
+    <div class="message" data-id="message-new">Start a new game...</div>
+
+    <div class="features manual">
+        <button class="manual-button" onclick="setManualMode()">Manual</button>
+        <div class="mines-left">
+            Mines left: <span data-id="mines-left"></span>
+        </div>
+        <div class="manual-message">Click to set mines</div>
+    </div>
 
     <div class="footer-container">
         <div class="footer">Coffeerights&copy;2021 Amitee Weiner</div>
