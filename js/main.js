@@ -25,7 +25,7 @@ function cellClicked(cellI, cellJ) {
     else if (cell.isShown && gIsRightClicked) {
         expandAround(pos);
         gIsRightClicked = false;
-    } else if (cell.isMine) lifeLostAt(pos);
+    } else if (cell.isMine && !cell.isShown) lifeLostAt(pos);
     else if (!cell.minesAroundCount) expandAround(pos);
     else showCell(pos);
 
