@@ -1,5 +1,5 @@
 # Minesweeper universe!
-https://amiteew.github.io/minesweeper
+https://ameetyw.github.io/minesweeper
 
 First project in Coding Academy fullstack training - accomplished in 3 days.
 Using vanilla JavaScript, HTML5, CSS3.
